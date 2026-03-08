@@ -1,13 +1,20 @@
 import React from 'react';
+import { useLanguage } from '../LanguageContext';
 
 const Hero = () => {
+  const { t } = useLanguage();
   return (
     <section id="hero" className="hero-section">
-      <div className="hero-overlay"></div>
-      <div className="hero-content">
-        <h1 className="hero-title">Nature's Finest Harvest</h1>
-        <p className="hero-subtitle">Fresh, organic, and locally sourced fruits delivered straight from the farm to your table.</p>
-        <a href="#products" className="cta-button">Shop Fresh Now</a>
+      <div className="hero-content reveal">
+        <span className="hero-badge">{'Fresh & Organic'}</span>
+        <h1 className="hero-title">{t('hero.title')}</h1>
+        <p className="hero-subtitle">{t('hero.subtitle')}</p>
+        <div className="hero-btns">
+          <a href="#products" className="cta-button">{t('hero.cta')}</a>
+        </div>
+      </div>
+      <div className="hero-scroll-indicator">
+        <div className="mouse"></div>
       </div>
     </section>
   );
