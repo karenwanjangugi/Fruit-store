@@ -11,6 +11,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import CartDrawer from './components/CartDrawer';
 import WhatsAppFloat from './components/WhatsAppFloat';
+import { LanguageProvider } from './LanguageContext';
 
 const App = () => {
   const [cart, setCart] = useState([]);
@@ -29,6 +30,27 @@ const App = () => {
   useEffect(() => {
     localStorage.setItem('aura-cart', JSON.stringify(cart));
   }, [cart]);
+
+  // Intersection Observer for scroll animations
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    const revealElements = document.querySelectorAll('.reveal');
+    revealElements.forEach(el => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
 
   const products = [
     { id: 1, name: 'Sweet Bananas', price: 100, unit: 'kg', image: 'https://images.unsplash.com/photo-1571771894821-ad9902610947?w=800&q=80', inStock: true },
@@ -65,6 +87,7 @@ const App = () => {
   };
 
   const calculateTotal = () => {
+    
     return cart.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2);
   };
 
@@ -83,27 +106,29 @@ const App = () => {
   };
 
   return (
-    <div className="app">
-      <Navbar cartCount={cart.reduce((a, b) => a + b.quantity, 0)} setIsCartOpen={setIsCartOpen} />
-      <Hero />
-      <Vision />
-      <Products products={products} addToCart={addToCart} />
-      <About />
-      <Contact />
-      <Footer />
-      
-      <WhatsAppFloat handleInquiry={handleInquiry} />
-      
-      <CartDrawer 
-        isCartOpen={isCartOpen} 
-        setIsCartOpen={setIsCartOpen}
-        cart={cart}
-        updateQuantity={updateQuantity}
-        removeFromCart={removeFromCart}
-        calculateTotal={calculateTotal}
-        handleCheckout={handleCheckout}
-      />
-    </div>
+    <LanguageProvider>
+      <div className="app">
+        <Navbar cartCount={cart.reduce((a, b) => a + b.quantity, 0)} setIsCartOpen={setIsCartOpen} />
+        <Hero />
+        <Vision />
+        <Products products={products} addToCart={addToCart} />
+        <About />
+        <Contact />
+        <Footer />
+        
+        <WhatsAppFloat handleInquiry={handleInquiry} />
+        
+        <CartDrawer 
+          isCartOpen={isCartOpen} 
+          setIsCartOpen={setIsCartOpen}
+          cart={cart}
+          updateQuantity={updateQuantity}
+          removeFromCart={removeFromCart}
+          calculateTotal={calculateTotal}
+          handleCheckout={handleCheckout}
+        />
+      </div>
+    </LanguageProvider>
   );
 };
 

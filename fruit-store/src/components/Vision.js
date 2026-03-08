@@ -1,25 +1,27 @@
 import React from 'react';
+import { useLanguage } from '../LanguageContext';
 
 const Vision = () => {
+  const { t } = useLanguage();
   return (
-    <section id="vision" className="vision-section">
+    <section id="vision" className="vision-section reveal">
       <div className="section-container">
-        <h2 className="section-title">Our Pure Vision</h2>
+        <h2 className="section-title">{t('vision.title')}</h2>
         <div className="vision-grid">
           <div className="vision-item">
             <div className="vision-icon">🌱</div>
-            <h3>100% Organic</h3>
-            <p>Grown without synthetic pesticides or fertilizers for the healthiest choice.</p>
+            <h3>{t('vision.organic.title')}</h3>
+            <p>{t('vision.organic.desc')}</p>
           </div>
           <div className="vision-item">
             <div className="vision-icon">🚜</div>
-            <h3>Farm to Table</h3>
-            <p>Direct sourcing from local farmers ensures peak freshness and fair trade.</p>
+            <h3>{t('vision.farmToTable.title')}</h3>
+            <p>{t('vision.farmToTable.desc')}</p>
           </div>
           <div className="vision-item">
             <div className="vision-icon">♻️</div>
-            <h3>Sustainable</h3>
-            <p>Eco-friendly packaging and practices to protect our planet for generations.</p>
+            <h3>{t('vision.sustainable.title')}</h3>
+            <p>{t('vision.sustainable.desc')}</p>
           </div>
         </div>
       </div>

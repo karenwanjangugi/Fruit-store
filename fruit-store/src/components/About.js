@@ -1,25 +1,27 @@
 import React from 'react';
+import { useLanguage } from '../LanguageContext';
 
 const About = () => {
+  const { t } = useLanguage();
   return (
-    <section id="about" className="about-section">
+    <section id="about" className="about-section reveal">
       <div className="section-container">
         <div className="about-flex">
           <div className="about-content">
-            <h2 className="section-title">Our Story</h2>
-            <p>Aura Fruit Store began with a simple belief: everyone deserves access to the freshest, most nutritious produce nature has to offer.</p>
+            <h2 className="section-title">{t('about.title')}</h2>
+            <p>{t('about.content')}</p>
             <div className="stats-grid">
-              <div className="stat-item">
+              {/* <div className="stat-item">
                 <span className="stat-number">50+</span>
-                <span className="stat-label">Local Farms</span>
+                <span className="stat-label">{t('about.farms')}</span>
               </div>
               <div className="stat-item">
                 <span className="stat-number">10k+</span>
-                <span className="stat-label">Happy Customers</span>
-              </div>
+                <span className="stat-label">{t('about.customers')}</span>
+              </div> */}
             </div>
           </div>
-          <div className="about-image" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1488459711616-24172e2007d4?w=800&q=80)' }}></div>
+          <div className="about-image" style={{ backgroundImage: 'url(/bananas.png)' }}></div>
         </div>
       </div>
     </section>
