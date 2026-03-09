@@ -55,12 +55,13 @@ export const translations = {
       title: "Shopping Cart",
       empty: "Your cart is empty",
       total: "Total",
-      checkout: "Checkout on WhatsApp",
+      checkout: "Order via WhatsApp",
       unit: "kg",
     },
     footer: {
       tagline: "Freshness you can taste, quality you can trust.",
       rights: "All rights reserved.",
+      follow: "Follow Us",
     }
   },
   sw: {
@@ -125,6 +126,7 @@ export const translations = {
     footer: {
       tagline: "Ubora unaoweza kuonja, uaminifu unaoweza kutumaini.",
       rights: "Haki zote zimehifadhiwa.",
+      follow: "Tufuate",
     }
   }
 };

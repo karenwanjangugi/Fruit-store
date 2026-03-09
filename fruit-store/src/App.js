@@ -53,11 +53,12 @@ const App = () => {
   }, []);
 
   const products = [
-    { id: 1, name: 'Sweet Bananas', price: 100, unit: 'kg', image: 'https://images.unsplash.com/photo-1571771894821-ad9902610947?w=800&q=80', inStock: true },
-    { id: 2, name: 'Golden Mangoes', price: 100, unit: 'kg', image: 'https://images.unsplash.com/photo-1553279768-865429fa0078?w=800&q=80', inStock: true },
-    { id: 3, name: 'Creamy Avocados', price: 100, unit: 'kg', image: 'https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?w=800&q=80', inStock: true },
-    { id: 4, name: 'Fresh Papayas', price: 100, unit: 'kg', image: 'https://images.unsplash.com/photo-1517282001929-f83614bc5230?w=800&q=80', inStock: true },
-    { id: 5, name: 'Aromatic Pishori Rice', price: 100, unit: '2kg', image: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=800&q=80', inStock: true },
+    { id: 1, name: 'Premium Bananas', price: 120, unit: 'kg', image: 'https://images.unsplash.com/photo-1571771894821-ad9902610947?w=1200&q=80', inStock: true },
+    { id: 2, name: 'Golden Mangoes', price: 150, unit: 'kg', image: 'https://images.unsplash.com/photo-1553279768-865429fa0078?w=1200&q=80', inStock: true },
+    { id: 3, name: 'Creamy Avocados', price: 180, unit: 'kg', image: 'https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?w=1200&q=80', inStock: true },
+    { id: 4, name: 'Fresh Papayas', price: 140, unit: 'kg', image: 'https://images.unsplash.com/photo-1517282001929-f83614bc5230?w=1200&q=80', inStock: true },
+    { id: 5, name: 'Aromatic Pishori', price: 350, unit: '2kg', image: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=1200&q=80', inStock: true },
+    { id: 6, name: 'Organic Lemons', price: 90, unit: 'kg', image: 'https://images.unsplash.com/photo-1585059895324-582b3c1f6a0a?w=1200&q=80', inStock: true },
   ];
 
   const addToCart = (product) => {
