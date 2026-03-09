@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import './App.css';
 
 // Import Components
@@ -11,46 +12,48 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import CartDrawer from './components/CartDrawer';
 import WhatsAppFloat from './components/WhatsAppFloat';
+import FarmPage from './components/FarmPage';
 import { LanguageProvider } from './LanguageContext';
+
+const Home = ({ products, addToCart, setIsCartOpen, handleInquiry }) => (
+  <>
+    <Hero />
+    <Vision />
+    <Products products={products} addToCart={addToCart} />
+    <About />
+    <Contact />
+    <WhatsAppFloat handleInquiry={handleInquiry} />
+  </>
+);
 
 const App = () => {
   const [cart, setCart] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const businessPhone = "0110944236"; 
+  const location = useLocation();
 
-  // Load cart from localStorage on mount
   useEffect(() => {
     const savedCart = localStorage.getItem('aura-cart');
-    if (savedCart) {
-      setCart(JSON.parse(savedCart));
-    }
+    if (savedCart) setCart(JSON.parse(savedCart));
   }, []);
 
-  // Save cart to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem('aura-cart', JSON.stringify(cart));
   }, [cart]);
 
-  // Intersection Observer for scroll animations
+  // Re-run observer on location change
   useEffect(() => {
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
+    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
     }, observerOptions);
 
     const revealElements = document.querySelectorAll('.reveal');
     revealElements.forEach(el => observer.observe(el));
-
     return () => observer.disconnect();
-  }, []);
+  }, [location.pathname]);
 
   const products = [
     { id: 1, name: 'Premium Bananas', price: 120, unit: 'kg', image: 'https://images.unsplash.com/photo-1571771894821-ad9902610947?w=1200&q=80', inStock: true },
@@ -64,39 +67,21 @@ const App = () => {
   const addToCart = (product) => {
     const existingItem = cart.find(item => item.id === product.id);
     if (existingItem) {
-      setCart(cart.map(item => 
-        item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
-      ));
+      setCart(cart.map(item => item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item));
     } else {
       setCart([...cart, { ...product, quantity: 1 }]);
     }
-    // Removed setIsCartOpen(true) so it doesn't pop open automatically
   };
 
-  const removeFromCart = (productId) => {
-    setCart(cart.filter(item => item.id !== productId));
-  };
-
+  const removeFromCart = (productId) => setCart(cart.filter(item => item.id !== productId));
   const updateQuantity = (productId, delta) => {
-    setCart(cart.map(item => {
-      if (item.id === productId) {
-        const newQty = Math.max(1, item.quantity + delta);
-        return { ...item, quantity: newQty };
-      }
-      return item;
-    }));
+    setCart(cart.map(item => item.id === productId ? { ...item, quantity: Math.max(1, item.quantity + delta) } : item));
   };
-
-  const calculateTotal = () => {
-    
-    return cart.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2);
-  };
+  const calculateTotal = () => cart.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2);
 
   const handleCheckout = () => {
     let message = "Hi Aura! I'd like to place an order:%0A%0A";
-    cart.forEach(item => {
-      message += `• ${item.name} (${item.quantity} x ksh.${item.price.toFixed(2)})%0A`;
-    });
+    cart.forEach(item => { message += `• ${item.name} (${item.quantity} x ksh.${item.price.toFixed(2)})%0A`; });
     message += `%0ATotal: ksh.${calculateTotal()}%0A%0AThank you!`;
     window.open(`https://wa.me/${businessPhone}?text=${message}`, '_blank');
   };
@@ -110,14 +95,13 @@ const App = () => {
     <LanguageProvider>
       <div className="app">
         <Navbar cartCount={cart.reduce((a, b) => a + b.quantity, 0)} setIsCartOpen={setIsCartOpen} />
-        <Hero />
-        <Vision />
-        <Products products={products} addToCart={addToCart} />
-        <About />
-        <Contact />
-        <Footer />
         
-        <WhatsAppFloat handleInquiry={handleInquiry} />
+        <Routes>
+          <Route path="/" element={<Home products={products} addToCart={addToCart} setIsCartOpen={setIsCartOpen} handleInquiry={handleInquiry} />} />
+          <Route path="/our-farm" element={<FarmPage />} />
+        </Routes>
+
+        <Footer />
         
         <CartDrawer 
           isCartOpen={isCartOpen} 

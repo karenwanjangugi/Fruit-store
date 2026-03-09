@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useLanguage } from '../LanguageContext';
 
 const About = () => {
@@ -11,7 +12,7 @@ const About = () => {
           <div className="about-content">
             <h2 className="section-title" style={{ textAlign: 'left' }}>{t('about.title')}</h2>
             <p>{t('about.content')}</p>
-            <div className="stats-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginTop: '3rem' }}>
+            <div className="stats-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginTop: '3rem', marginBottom: '3rem' }}>
               <div className="stat-item">
                 <span className="stat-number" style={{ fontSize: '3rem', fontWeight: '900', color: 'var(--primary)', display: 'block' }}>50+</span>
                 <span className="stat-label" style={{ textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.8rem', color: 'var(--muted-text)' }}>{t('about.farms')}</span>
@@ -21,6 +22,7 @@ const About = () => {
                 <span className="stat-label" style={{ textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.8rem', color: 'var(--muted-text)' }}>{t('about.customers')}</span>
               </div>
             </div>
+            <Link to="/our-farm" className="cta-button">{t('about.seeFarm')}</Link>
           </div>
         </div>
       </div>

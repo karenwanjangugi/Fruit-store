@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useLanguage } from '../LanguageContext';
 
 const Navbar = ({ cartCount, setIsCartOpen }) => {
@@ -14,10 +15,12 @@ const Navbar = ({ cartCount, setIsCartOpen }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const closeMenu = () => setIsMenuOpen(false);
+
   return (
     <nav className={`nav ${isScrolled ? 'scrolled' : ''}`}>
       <div className="nav-left">
-        <a href="/" className="logo">AURA<span>.</span></a>
+        <Link to="/" className="logo" onClick={closeMenu}>AURA<span>.</span></Link>
         <button className="menu-toggle" onClick={() => setIsMenuOpen(!isMenuOpen)}>
           <div className={`hamburger ${isMenuOpen ? 'open' : ''}`}>
             <span></span>
@@ -28,11 +31,11 @@ const Navbar = ({ cartCount, setIsCartOpen }) => {
       </div>
 
       <div className={`nav-links ${isMenuOpen ? 'mobile-open' : ''}`}>
-        <a href="#hero" onClick={() => setIsMenuOpen(false)}>{t('nav.home')}</a>
-        <a href="#vision" onClick={() => setIsMenuOpen(false)}>{t('nav.vision')}</a>
-        <a href="#products" onClick={() => setIsMenuOpen(false)}>{t('nav.products')}</a>
-        <a href="#about" onClick={() => setIsMenuOpen(false)}>{t('nav.about')}</a>
-        <a href="#contact" onClick={() => setIsMenuOpen(false)}>{t('nav.contact')}</a>
+        <Link to="/" onClick={closeMenu}>{t('nav.home')}</Link>
+        <a href="/#vision" onClick={closeMenu}>{t('nav.vision')}</a>
+        <a href="/#products" onClick={closeMenu}>{t('nav.products')}</a>
+        <Link to="/our-farm" onClick={closeMenu}>Farm</Link>
+        <a href="/#contact" onClick={closeMenu}>{t('nav.contact')}</a>
       </div>
 
       <div className="nav-right">

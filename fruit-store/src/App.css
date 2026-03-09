@@ -95,6 +95,11 @@ h1, h2, h3, h4 {
   letter-spacing: 2px;
   transition: var(--transition);
 }
+
+.nav-links a:hover {
+  color: var(--primary);
+}
+
 .nav-right {
   display: flex;
   align-items: center;
@@ -153,6 +158,7 @@ h1, h2, h3, h4 {
   justify-content: center;
   font-weight: 900;
 }
+
 .cart-toggle:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 20px rgba(164, 214, 94, 0.3);
@@ -212,11 +218,11 @@ h1, h2, h3, h4 {
   transform: translateY(-5px);
 }
 
-/* --- Vision Section: Overlapping Floating Layout --- */
+/* --- Vision Section --- */
 .vision-section {
   padding: 12rem 10%;
   background: var(--dark-accent);
-  overflow: hidden; /* Prevent horizontal scroll from staggered items */
+  overflow: hidden;
 }
 
 .vision-grid {
@@ -299,10 +305,6 @@ h1, h2, h3, h4 {
   width: 100%;
 }
 
-.product-card:hover .product-img {
-  transform: scale(1.05);
-}
-
 .product-info {
   padding: 2.5rem;
   background: linear-gradient(to top, #0d4635, transparent);
@@ -343,7 +345,7 @@ h1, h2, h3, h4 {
   border-color: var(--white);
 }
 
-/* --- About Section: Creative Offset Layout --- */
+/* --- About Section --- */
 .about-section {
   padding: 12rem 10%;
   background: var(--dark-accent);
@@ -416,7 +418,7 @@ h1, h2, h3, h4 {
   border-color: var(--primary);
 }
 
-/* --- Cart Drawer & Overlay --- */
+/* --- Cart Drawer --- */
 .cart-drawer {
   position: fixed;
   top: 0;
@@ -605,11 +607,175 @@ h1, h2, h3, h4 {
   font-size: 0.9rem;
 }
 
+/* --- Farm Page --- */
+.farm-hero {
+  min-height: 70vh;
+  background: linear-gradient(rgba(11, 61, 46, 0.75), rgba(11, 61, 46, 0.9)), url('https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?q=80&w=2000');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 120px 5% 100px;
+  text-align: center;
+}
+
+.farm-hero-content {
+  max-width: 900px;
+  width: 100%;
+}
+
+.back-link {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 700;
+  display: inline-block;
+  margin-bottom: 3rem;
+  font-size: 1.1rem;
+  transition: var(--transition);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.back-link:hover { 
+  transform: translateX(-10px); 
+  color: var(--white); 
+}
+
+.farm-stats-section {
+  padding-top: 0;
+  margin-top: -60px;
+  position: relative;
+  z-index: 10;
+}
+
+.farm-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.stat-card {
+  background: var(--primary);
+  color: var(--dark);
+  padding: 4rem 2rem;
+  border-radius: var(--radius-lg);
+  text-align: center;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 250px;
+}
+
+.stat-card:hover { transform: translateY(-10px); background: var(--white); }
+.stat-card h3 { font-size: 3.5rem; margin-bottom: 0.5rem; font-weight: 900; }
+.stat-card p { font-weight: 800; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
+
+.farm-gallery-section { padding: 12rem 10% 8rem; background: var(--dark); }
+
+.farm-masonry {
+  columns: 3 300px;
+  column-gap: 2.5rem;
+}
+
+.gallery-item {
+  position: relative;
+  margin-bottom: 2.5rem;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  break-inside: avoid;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.gallery-item img {
+  width: 100%;
+  display: block;
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(11, 61, 46, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: var(--transition);
+  padding: 2rem;
+  text-align: center;
+}
+
+.gallery-item:hover .gallery-overlay { opacity: 1; }
+.gallery-item:hover img { transform: scale(1.1); }
+
+.gallery-overlay span {
+  color: var(--white);
+  font-family: var(--serif);
+  font-size: 1.8rem;
+  font-weight: 700;
+  transform: translateY(20px);
+  transition: var(--transition);
+}
+
+.gallery-item:hover .gallery-overlay span { transform: translateY(0); }
+
+.testimonials-section { padding: 12rem 10%; background: var(--dark-accent); }
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 4rem;
+}
+
+.testimonial-card {
+  background: rgba(255,255,255,0.02);
+  padding: 5rem 3.5rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255,255,255,0.05);
+  position: relative;
+  transition: var(--transition);
+}
+
+.testimonial-card:hover { background: rgba(255,255,255,0.04); transform: translateY(-10px); }
+
+.quote-icon {
+  font-family: var(--serif);
+  font-size: 10rem;
+  color: var(--primary);
+  opacity: 0.1;
+  position: absolute;
+  top: -20px;
+  left: 20px;
+  line-height: 1;
+}
+
+.testimonial-text {
+  font-size: 1.3rem;
+  line-height: 2;
+  margin-bottom: 2.5rem;
+  position: relative;
+  z-index: 2;
+  font-style: italic;
+}
+
+.testimonial-author strong { color: var(--primary); font-size: 1.4rem; display: block; margin-bottom: 0.5rem; }
+.testimonial-author span { color: var(--muted-text); font-size: 1rem; }
+
+.farm-cta { text-align: center; background: var(--dark); padding: 10rem 10%; }
+.farm-cta h2 { font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 3rem; }
+
 /* --- Reveal Animation --- */
 .reveal { opacity: 0; transform: translateY(60px); transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
-/* --- Navigation Mobile Enhancements --- */
+/* --- Navigation Mobile --- */
 .menu-toggle {
   display: none;
   background: none;
@@ -650,6 +816,7 @@ h1, h2, h3, h4 {
   .about-image { height: 500px; max-width: 100%; }
   .about-image::before { inset: -10px; }
   .contact-box { grid-template-columns: 1fr; gap: 4rem; padding: 4rem; }
+  .farm-stats-grid { gap: 1.5rem; }
 }
 
 @media (max-width: 1024px) {
@@ -673,10 +840,11 @@ h1, h2, h3, h4 {
   }
 
   .nav-links.mobile-open { right: 0; }
-  
   .nav-links a { font-size: 1.5rem; }
-  
   .footer-content { grid-template-columns: 1fr; gap: 3rem; }
+  .farm-stats-grid { grid-template-columns: 1fr; margin-top: 60px; padding: 0; }
+  .farm-stats-section { margin-top: 0; }
+  .farm-hero { height: auto; padding: 150px 5% 100px; }
 }
 
 @media (max-width: 768px) {
@@ -697,13 +865,17 @@ h1, h2, h3, h4 {
   .cart-drawer { max-width: 100%; padding: 2rem; }
   .whatsapp-float { width: 60px; height: 60px; bottom: 20px; right: 20px; }
   .whatsapp-float svg { width: 28px; height: 28px; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .farm-masonry { columns: 1; }
 }
 
 @media (max-width: 480px) {
   .section-container { padding: 5rem 1rem; }
   .section-title { font-size: 2.2rem; }
   .about-image { height: 300px; }
-  .about-image::before { display: none; } /* Remove decorative border on smallest screens to prevent any scroll issues */
+  .about-image::before { display: none; }
   .contact-box { padding: 2rem 1.5rem; }
   .product-img { height: 280px; }
+  .stat-card { padding: 2.5rem 1.5rem; }
+  .stat-card h3 { font-size: 2.5rem; }
 }
