@@ -41,7 +41,25 @@ export const translations = {
       content: "Aura Fruit Store began with a simple belief: everyone deserves access to the freshest, most nutritious produce nature has to offer.",
       farms: "Local Farms",
       customers: "Happy Customers",
+      seeFarm: "See Our Farm In Action",
     },
+    farm: {
+      title: "From Our Soil to Your Table",
+      subtitle: "Witness the care and passion behind every harvest. We practice regenerative farming to ensure our land stays fertile for generations.",
+      gallery: "Life at the Farm",
+      testimonials: "What Our Community Says",
+      backHome: "Back to Shop",
+      stats: {
+        acres: "150+ Protected Acres",
+        organic: "100% Certified Organic",
+        water: "Rainwater Harvesting",
+      }
+    },
+    testimonials: [
+      { name: "Sarah W.", role: "Home Chef", text: "The quality of the mangoes is unmatched. You can taste the sunshine in every bite!" },
+      { name: "David K.", role: "Health Enthusiast", text: "Finding truly organic avocados was a challenge until I discovered Aura. Simply the best." },
+      { name: "Grace M.", role: "Mother", text: "I feel good knowing exactly where my children's fruit comes from. Freshness is 10/10." }
+    ],
     contact: {
       title: "Get In Touch",
       subtitle: "Ready to start your next big project? We're here to help you bring it to life.",
@@ -55,12 +73,13 @@ export const translations = {
       title: "Shopping Cart",
       empty: "Your cart is empty",
       total: "Total",
-      checkout: "Checkout on WhatsApp",
+      checkout: "Order via WhatsApp",
       unit: "kg",
     },
     footer: {
       tagline: "Freshness you can taste, quality you can trust.",
       rights: "All rights reserved.",
+      follow: "Follow Us",
     }
   },
   sw: {
@@ -105,7 +124,25 @@ export const translations = {
       content: "Aura Fruit Store ilianza na imani rahisi: kila mtu anastahili kupata mazao safi na yenye lishe bora zaidi ambayo asili hutoa.",
       farms: "Mashamba ya Karibu",
       customers: "Wateja Walioridhika",
+      seeFarm: "Tazama Shamba Letu",
     },
+    farm: {
+      title: "Kutoka Shambani Hadi Mezani",
+      subtitle: "Shuhudia utunzaji na upendo nyuma ya kila mavuno. Tunafanya kilimo endelevu ili kuhakikisha ardhi yetu inabaki na rutuba.",
+      gallery: "Maisha Shambani",
+      testimonials: "Maoni ya Jamii Yetu",
+      backHome: "Rudi Dukani",
+      stats: {
+        acres: "Ekari 150+ Zinazolindwa",
+        organic: "100% Kilimo Hai",
+        water: "Uvunaji wa Maji ya Mvua",
+      }
+    },
+    testimonials: [
+      { name: "Sarah W.", role: "Mpishi", text: "Ubora wa maembe haya hauna kifani. Unaweza kuonja jua katika kila kipande!" },
+      { name: "David K.", role: "Mwanaharakati wa Afya", text: "Kupata parachichi za asili ilikuwa changamoto mpaka nilipoipata Aura. Ni bora zaidi." },
+      { name: "Grace M.", role: "Mama", text: "Najisikia vizuri nikijua hasa matunda ya watoto wangu yanatoka wapi. Ubora ni 10/10." }
+    ],
     contact: {
       title: "Wasiliana Nasi",
       subtitle: "Uko tayari kuanza mradi wako mkubwa? Tuko hapa kukusaidia kuukamilisha.",
@@ -125,6 +162,7 @@ export const translations = {
     footer: {
       tagline: "Ubora unaoweza kuonja, uaminifu unaoweza kutumaini.",
       rights: "Haki zote zimehifadhiwa.",
+      follow: "Tufuate",
     }
   }
 };

@@ -7,11 +7,7 @@ const Products = ({ products, addToCart }) => {
 
   const handleAdd = (product) => {
     addToCart(product);
-    
-    // Set 'added' state for this specific product
     setAddedItems(prev => ({ ...prev, [product.id]: true }));
-    
-    // Reset back after 1 seconds
     setTimeout(() => {
       setAddedItems(prev => ({ ...prev, [product.id]: false }));
     }, 1000);
@@ -21,7 +17,7 @@ const Products = ({ products, addToCart }) => {
     <section id="products" className="products-section reveal">
       <div className="section-container">
         <h2 className="section-title">{t('products.title')}</h2>
-        <p className="section-subtitle-main">
+        <p className="section-subtitle-main" style={{ color: 'var(--muted-text)', textAlign: 'center' }}>
           {t('products.subtitle')}
         </p>
         
@@ -29,16 +25,13 @@ const Products = ({ products, addToCart }) => {
           {products.map(product => (
             <div key={product.id} className={`product-card ${!product.inStock ? 'out-of-stock' : ''}`}>
               <div className="product-img" style={{ backgroundImage: `url(${product.image})` }}>
-                <span className="price-tag">Ksh.{product.price.toFixed(2)} / {product.unit}</span>
-                {!product.inStock && (
-                  <div className="status-badge">{t('products.nextHarvest')}: {product.availableDate}</div>
-                )}
               </div>
               <div className="product-info">
+                <span className="price-tag">Ksh.{product.price.toFixed(2)} / {product.unit}</span>
                 <h3>{product.name}</h3>
-                <p>
+                <p style={{ color: 'var(--muted-text)', marginBottom: '1.5rem' }}>
                   {product.inStock 
-                    ? "Freshly harvested and quality checked for peak flavor." 
+                    ? "Peak freshness guaranteed. Farm-to-table delivery within 24 hours." 
                     : `${t('products.outOfStock')}. ${t('products.nextHarvest')}: ${product.availableDate}.`}
                 </p>
                 <button 
@@ -55,7 +48,7 @@ const Products = ({ products, addToCart }) => {
           ))}
         </div>
 
-        <div className="availability-notice">
+        <div className="availability-notice" style={{ marginTop: '5rem', border: '1px dashed var(--primary)', padding: '2rem', borderRadius: 'var(--radius-lg)', color: 'var(--muted-text)', textAlign: 'center' }}>
           <p>
             {t('products.disclaimer')}
           </p>
